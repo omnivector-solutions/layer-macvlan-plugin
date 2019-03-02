@@ -30,10 +30,12 @@ def get_bind_interface_cidr():
     for bind_address in data['bind-addresses']:
         if bind_address['interfacename'].startswith('fan-'):
             continue
-        kv.set('interfacename', bind_address['interfacename'])
-        kv.set('cidr', bind_address['addresses'][0]['cidr'])
-        set_flag('cni.interface.cidr.acquired')
-        return
+        if bind_address['interfacename'] and \
+           bind_address['addresses'][0]['cidr']:
+            kv.set('interfacename', bind_address['interfacename'])
+            kv.set('cidr', bind_address['addresses'][0]['cidr'])
+            set_flag('cni.interface.cidr.acquired')
+            return
 
     status.blocked('Unable to create CNI configuration.')
     return
