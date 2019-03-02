@@ -1,0 +1,5 @@
+includes:
+  - 'layer:basic'
+  - 'layer:status'
+  - 'interface:kubernetes-cni'
+repo: https://github.com/jamesbeedy/layer-macvlan-plugin

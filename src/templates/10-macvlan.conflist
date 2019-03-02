@@ -1,0 +1,8 @@
+{
+  "name": "juju-macvlan-net",
+  "type": "macvlan",
+  "master": "{{interfacename}}",
+  "ipam": {
+    "type": "dhcp"
+  }
+}

@@ -1,0 +1,17 @@
+name: macvlan-plugin
+summary: CNI macvlan plugin for K8S
+maintainers:
+  - James Beedy <jamesbeedy@gmail.com>
+description: |
+  Configures the CNI macvlan plugin.
+  For use with CDK on bare metal.
+tags:
+  - networking
+subordinate: true
+series:
+  - xenial
+  - bionic
+requires:
+  cni:
+    interface: kubernetes-cni
+    scope: container
