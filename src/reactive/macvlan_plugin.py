@@ -61,3 +61,8 @@ def configure_worker_cni():
     render('10-macvlan.conflist', '/etc/cni/net.d/10-macvlan.conflist', ctxt)
     cni.set_config(cidr=kv.get('cidr'))
     set_flag('macvlan.cni.configured')
+
+
+@when('macvlan.cni.configured')
+def set_cni_configured_status():
+    status.active('macvlan cni configured')
