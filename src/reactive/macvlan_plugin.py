@@ -57,7 +57,7 @@ def configure_worker_cni():
     status.maint('Configuring MACVLAN CNI')
     cni = endpoint_from_flag('cni.is-worker')
     os.makedirs('/etc/cni/net.d', exist_ok=True)
-    ctxt = {'interface': kv.get('interfacename')}
+    ctxt = {'interfacename': kv.get('interfacename')}
     render('10-macvlan.conflist', '/etc/cni/net.d/10-macvlan.conflist', ctxt)
     cni.set_config(cidr=kv.get('cidr'))
     set_flag('macvlan.cni.configured')
